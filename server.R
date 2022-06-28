@@ -1,4 +1,5 @@
 library(shiny)
+library(shinydashboard)
 library(plotly)
 library(DT)
 library(ggplot2)
@@ -6,7 +7,7 @@ library(dplyr)
 library(rjson)
 library(lubridate)
 
-server <- function(input, output) {
+shinyServer(function(input, output) {
     dataset <- reactive({
         url <- "http://www.ipeadata.gov.br/api/odata4/Metadados('"
         SERCODIGO <- "PRECOS12_IPCAG12"
@@ -58,4 +59,4 @@ server <- function(input, output) {
         dt <- DT::datatable(df)
         return(dt)
     })
-}
+})
