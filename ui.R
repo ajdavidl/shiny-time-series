@@ -1,7 +1,9 @@
 library(shiny)
 library(shinydashboard)
+library(shinycssloaders)
 library(plotly)
 library(DT)
+library(lubridate)
 
 header <- dashboardHeader(
     title = "Times series visualization",
@@ -14,18 +16,45 @@ sidebar <- dashboardSidebar(
         c(1, 2, 3, 4, 5),
         selected = 2,
         width = NULL
+    ),
+    dateRangeInput("dateRange", "Range temporal:",
+        start = as.Date("2018-01-01"),
+        end = today(),
+        min = as.Date("1980-01-01"),
+        max = today(),
+        separator = " para ",
+        language = "pt-BR",
+        format = "mm-yyyy"
     )
 )
 
 body <- dashboardBody(
     fluidRow(
+        column(
+            width = 5,
+            box(
+                title = "Itens:",
+                selectInput(
+                    "sercodigo", "Item desejado:",
+                    c(
+                        "IPCA" = "PRECOS12_IPCAG12",
+                        "PIB" = "BM12_PIB12",
+                        "Taxa de juros - Selic" = "BM366_TJOVER366",
+                        "Taxa de câmbio - compra" = "GM366_ERC366",
+                        "Taxa de câmbio - venda" = "GM366_ERV366"
+                    )
+                )
+            )
+        )
+    ),
+    fluidRow(
         box(
             title = "Tabela", width = 4,
-            dataTableOutput("datatable")
+            withSpinner(dataTableOutput("datatable"))
         ),
         box(
             title = "Gráfico", width = 8,
-            plotlyOutput("grafico")
+            withSpinner(plotlyOutput("grafico"))
         )
     )
 )

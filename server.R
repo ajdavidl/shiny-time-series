@@ -10,8 +10,8 @@ library(lubridate)
 shinyServer(function(input, output) {
     dataset <- reactive({
         url <- "http://www.ipeadata.gov.br/api/odata4/Metadados('"
-        SERCODIGO <- "PRECOS12_IPCAG12"
-        url_metadado <- paste0(url, SERCODIGO, "')")
+        sercodigo <- input$sercodigo
+        url_metadado <- paste0(url, sercodigo, "')")
         url_valores <- paste0(url_metadado, "/Valores")
 
         metadados <- fromJSON(file = url_metadado)
@@ -44,10 +44,15 @@ shinyServer(function(input, output) {
         return(df)
     })
 
-
+    datasetFiltered <- reactive({
+        df <- dataset()
+        df <- df %>%
+            filter(DATA >= input$dateRange[1], DATA <= input$dateRange[2])
+        return(df)
+    })
 
     output$grafico <- renderPlotly({
-        df <- dataset()
+        df <- datasetFiltered()
         p <- ggplot(df, aes(x = DATA, y = DADOS)) +
             geom_line()
         plot <- ggplotly(p)
@@ -55,7 +60,7 @@ shinyServer(function(input, output) {
     })
 
     output$datatable <- renderDataTable({
-        df <- dataset()
+        df <- datasetFiltered()
         dt <- DT::datatable(df)
         return(dt)
     })
