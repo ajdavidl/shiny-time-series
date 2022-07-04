@@ -53,8 +53,21 @@ shinyServer(function(input, output) {
 
     output$grafico <- renderPlotly({
         df <- datasetFiltered()
-        p <- ggplot(df, aes(x = DATA, y = DADOS)) +
-            geom_line()
+        p <- ggplot(df, aes(x = DATA, y = DADOS),
+            size = 1.2,
+        ) +
+            geom_line() +
+            theme(
+                legend.title = element_blank(),
+                panel.background = element_rect(fill = "whitesmoke"),
+                axis.text.x = element_text(face = "bold", size = 12),
+                axis.text.y = element_text(face = "bold", size = 12),
+                axis.title.y = element_text(face = "bold"),
+                axis.line = element_line(colour = "black")
+            ) +
+            ggtitle(" ") +
+            ylab(" ") +
+            xlab(" ")
         plot <- ggplotly(p)
         return(plot)
     })
