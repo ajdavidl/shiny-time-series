@@ -7,6 +7,8 @@ library(dplyr)
 library(rjson)
 library(lubridate)
 
+source("config.R", encoding = "utf-8")
+
 shinyServer(function(input, output) {
     dataset <- reactive({
         url <- "http://www.ipeadata.gov.br/api/odata4/Metadados('"
@@ -74,7 +76,12 @@ shinyServer(function(input, output) {
 
     output$datatable <- renderDataTable({
         df <- datasetFiltered()
-        dt <- DT::datatable(df)
+        dt <- DT::datatable(df,
+            extensions = DT_extensions,
+            class = DT_Class,
+            escape = FALSE,
+            options = DT_Options
+        )
         return(dt)
     })
 })
