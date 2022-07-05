@@ -41,7 +41,11 @@ body <- dashboardBody(
                         "PIB" = "BM12_PIB12",
                         "Taxa de juros - Selic" = "BM366_TJOVER366",
                         "Taxa de câmbio - compra" = "GM366_ERC366",
-                        "Taxa de câmbio - venda" = "GM366_ERV366"
+                        "Taxa de câmbio - venda" = "GM366_ERV366",
+                        "Pessoas ocupadas" = "PNADC12_PO12",
+                        "Pessoas desocupadas" = "PNADC12_PD12",
+                        "Taxa de desocupação" = "PNADC12_TDESOC12",
+                        "Taxa de participação" = "PNADC12_TPART12"
                     )
                 )
             )
