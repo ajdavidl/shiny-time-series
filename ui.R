@@ -18,7 +18,7 @@ sidebar <- dashboardSidebar(
         width = NULL
     ),
     dateRangeInput("dateRange", "Range temporal:",
-        start = as.Date("2018-01-01"),
+        start = as.Date("2019-01-01"),
         end = today(),
         min = as.Date("1980-01-01"),
         max = today(),
@@ -38,7 +38,13 @@ body <- dashboardBody(
                     "sercodigo", "Item desejado:",
                     c(
                         "IPCA" = "PRECOS12_IPCAG12",
+                        "IPCA-15" = "PRECOS12_IPCA15G12",
+                        "IPCA-EX1" = "BM12_IPCAEXCEX212",
                         "PIB" = "BM12_PIB12",
+                        "IGP-DI" = "IGP12_IGPDIG12",
+                        "IGP-M" = "IGP12_IGPMG12",
+                        "INCC-DI" = "IGP12_INCCG12",
+                        "IPA-DI" = "IGP12_IPADIG12",
                         "Taxa de juros - Selic" = "BM366_TJOVER366",
                         "Taxa de câmbio - compra" = "GM366_ERC366",
                         "Taxa de câmbio - venda" = "GM366_ERV366",
