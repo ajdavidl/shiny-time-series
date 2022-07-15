@@ -4,20 +4,14 @@ library(plotly)
 library(DT)
 library(ggplot2)
 library(dplyr)
-library(rjson)
 library(lubridate)
 
 source("config.R", encoding = "utf-8")
+source("util.R", encoding = "utf-8")
 
 shinyServer(function(input, output) {
     dataset <- reactive({
-        url <- "http://www.ipeadata.gov.br/api/odata4/Metadados('"
-        sercodigo <- input$sercodigo
-        url_metadado <- paste0(url, sercodigo, "')")
-        url_valores <- paste0(url_metadado, "/Valores")
-
-        metadados <- fromJSON(file = url_metadado)
-        valores <- fromJSON(file = url_valores)
+        valores <- ipeadatacache(input$sercodigo, "valores")
 
         df <- data.frame(
             X1 = valores$value[[1]]$VALDATA[1],
