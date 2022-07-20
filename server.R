@@ -47,8 +47,13 @@ shinyServer(function(input, output) {
         return(df)
     })
 
+    metadados <- reactive(({
+        return(ipeadatacache(input$sercodigo, "metadados"))
+    }))
+
     output$grafico <- renderPlotly({
         df <- datasetFiltered()
+        metadados_ <- metadados()
         p <- ggplot(df, aes(x = DATA, y = DADOS),
             size = 1.2,
         ) +
@@ -61,9 +66,12 @@ shinyServer(function(input, output) {
                 axis.title.y = element_text(face = "bold"),
                 axis.line = element_line(colour = "black")
             ) +
-            ggtitle(" ") +
-            ylab(" ") +
-            xlab(" ")
+            labs(
+                title = metadados_$value[[1]]$SERNOME,
+                caption = metadados_$value[[1]]$FNTNOME
+            ) +
+            ylab(metadados_$value[[1]]$UNINOME) +
+            xlab(metadados_$value[[1]]$PERNOME)
         plot <- ggplotly(p)
         return(plot)
     })
