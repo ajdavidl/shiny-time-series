@@ -51,7 +51,10 @@ body <- dashboardBody(
                         "Pessoas ocupadas" = "PNADC12_PO12",
                         "Pessoas desocupadas" = "PNADC12_PD12",
                         "Taxa de desocupação" = "PNADC12_TDESOC12",
-                        "Taxa de participação" = "PNADC12_TPART12"
+                        "Taxa de participação" = "PNADC12_TPART12",
+                        "Salário Mínimo" = "MTE12_SALMIN12",
+                        "Salário Mínimo Real" = "GAC12_SALMINRE12",
+                        "Embi" = "JPM366_EMBI366"
                     )
                 )
             )
