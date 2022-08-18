@@ -54,7 +54,9 @@ body <- dashboardBody(
                         "Taxa de participação" = "PNADC12_TPART12",
                         "Salário Mínimo" = "MTE12_SALMIN12",
                         "Salário Mínimo Real" = "GAC12_SALMINRE12",
-                        "Embi" = "JPM366_EMBI366"
+                        "Embi" = "JPM366_EMBI366",
+                        "Ibovespa - fechamento" = "GM366_IBVSP366"#,
+                        #"Ibovespa - fechamento - volatilidade" = "GM366_IBVSPV366"
                     )
                 )
             )
