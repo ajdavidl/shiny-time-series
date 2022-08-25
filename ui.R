@@ -25,15 +25,22 @@ sidebar <- dashboardSidebar(
         separator = " para ",
         language = "pt-BR",
         format = "mm-yyyy"
+    ),
+    h3(" Menu"),
+    sidebarMenu(id = "menuItens",
+        menuItem("Ipeadata", tabName = "ipeadata", icon = icon("file")),
+        menuItem("Sgs Bacen", tabName = "sgsbacen", icon = icon("file-archive"))
     )
 )
 
 body <- dashboardBody(
-    fluidRow(
+  tabItems(
+    tabItem(tabName = "ipeadata",
+      fluidRow(
         column(
             width = 5,
             box(
-                title = "Itens:",
+                title = "Itens do Ipeadata:",
                 selectInput(
                     "sercodigo", "Item desejado:",
                     c(
@@ -65,12 +72,42 @@ body <- dashboardBody(
     fluidRow(
         box(
             title = "Tabela", width = 4,
-            withSpinner(dataTableOutput("datatable"))
+            withSpinner(dataTableOutput("datatableIpeadata"))
         ),
         box(
             title = "Gráfico", width = 8,
-            withSpinner(plotlyOutput("grafico"))
+            withSpinner(plotlyOutput("graficoIpeadata"))
         )
+    )
+    ),
+    tabItem(tabName = "sgsbacen",
+            fluidRow(
+              column(
+                width = 5,
+                box(
+                  title = "Itens do SGS:",
+                  selectInput(
+                    "sgscodigo", "item desejado:",
+                    c("Câmbio" = "1",
+                      "Câmbio ocorrido" = "3698",
+                      "Selic Meta" = "432",
+                      "Selic Ocorrida" = "4189")
+                  )
+                )
+              )
+            ),
+            fluidRow(
+              box(
+                title = "Tabela", width = 4,
+                withSpinner(dataTableOutput("datatableSGS"))
+              ),
+              box(
+                title = "Gráfico", width = 8,
+                withSpinner(plotlyOutput("graficoSGS"))
+              )
+            )
+      #
+    )
     )
 )
 

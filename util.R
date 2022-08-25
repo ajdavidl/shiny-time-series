@@ -25,3 +25,12 @@ ipeadata <- function(sercodigo, tipodado) {
 }
 
 ipeadatacache <- memoise(ipeadata, cache = cd)
+
+sgsbacen <- function(sgscodigo){
+  url <- paste0("https://api.bcb.gov.br/dados/serie/bcdata.sgs.",sgscodigo,"/dados?formato=json")
+  print(url)
+  valores <- fromJSON(file = url)
+  return(valores)
+}
+
+sgsbacencache <- memoise(sgsbacen, cache = cd)
