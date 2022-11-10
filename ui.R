@@ -1,25 +1,14 @@
-
-
 library(shiny)
-
 library(shinydashboard)
-
 library(shinycssloaders)
-
 library(plotly)
-
 library(DT)
-
 library(lubridate)
 
-
-
 header <- dashboardHeader(
-  title = "Times series visualization",
-  titleWidth = 300
+  title = "Visualização de séries temporais",
+  titleWidth = 450
 )
-
-
 
 sidebar <- dashboardSidebar(
   width = 380,
@@ -45,9 +34,14 @@ sidebar <- dashboardSidebar(
   )
 )
 
-
-
 body <- dashboardBody(
+  tags$head(tags$style(HTML('
+      .main-header .logo {
+        font-family: "Georgia", Times, "Times New Roman", serif;
+        font-weight: bold;
+        font-size: 24px;
+      }
+    '))),
   tabItems(
     tabItem(
       tabName = "ipeadata",
@@ -144,4 +138,4 @@ body <- dashboardBody(
 
 
 
-dashboardPage(header, sidebar, body)
+dashboardPage(header, sidebar, body, skin="black")
