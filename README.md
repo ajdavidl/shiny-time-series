@@ -18,3 +18,11 @@ R -e "shiny::runApp('.', port = 3838)"
 ```
 
 Em seguida, abra um navegador e acesse o link [http://localhost:3838](http://localhost:3838)
+
+## Imagens
+
+### IBGE
+<img src="img/fig1.png" alt="Menu IBGE" style="width: 600px"/>
+
+### SGS
+<img src="img/fig2.png" alt="Menu SGS" style="width: 600px"/>
