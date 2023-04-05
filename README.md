@@ -14,9 +14,18 @@ O app utiliza a API do [Ipeadata](http://ipeadata.gov.br/) e do Sistema Gerencia
 Clone o repositório e execute o app com o seguinte comando no terminal.
 
 ```shell
+git clone https://github.com/ajdavidl/shiny-time-series.git
+cd shiny-time-series
 R -e "shiny::runApp('.', port = 3838)"
 ```
 
+Alternativamente, é possível usar o docker:
+```shell
+git clone https://github.com/ajdavidl/shiny-time-series.git
+cd shiny-time-series
+docker build -t shiny_time_series 
+docker run --rm -p 3838:3838 shiny_time_series
+```
 Em seguida, abra um navegador e acesse o link [http://localhost:3838](http://localhost:3838)
 
 ## Imagens
