@@ -1,5 +1,7 @@
 # Shiny time series
 
+[English version](README_English.md)
+
 Shiny app para visualizar séries temporais.
 
 <div>
