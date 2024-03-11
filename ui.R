@@ -116,7 +116,10 @@ body <- dashboardBody(
                 "PIB variação anual" = "7326",
                 "População (mil)" = "21774",
                 "Selic Meta" = "432",
-                "Selic Ocorrida" = "4189"
+                "Selic Ocorrida" = "4189",
+                "População na força de trabalho - PNADC" = "24378",
+                "Pessoas Ocupadas - PNADC" = "24379",
+                "Pessoas Desocupadas - PNADC" = "24380"
               )
             )
           )
