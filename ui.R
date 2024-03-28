@@ -113,6 +113,8 @@ body <- dashboardBody(
                   "IPCA Industriais" = "27863",
                   "IPCA Saúde" = "1641"
                 ),
+                "Dívida Líquida Setor Público (%PIB)" = "4504",
+                "Divida Líquida do Governo Geral" = "4536",
                 "PIB variação anual" = "7326",
                 "População (mil)" = "21774",
                 "Selic Meta" = "432",
